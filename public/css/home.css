@@ -1,0 +1,87 @@
+/* Styles spécifiques au carrousel de la page d'accueil */
+.carousel-fullscreen {
+    max-height: calc(100vh - var(--navbar-height, 56px));
+    height: calc(100vh - var(--navbar-height, 56px));
+    width: 100%;
+    object-fit: contain;
+    /* éviter le crop */
+    object-position: center;
+    background-color: #000;
+    /* bandes neutres si ratio différent */
+}
+
+.home-carousel {
+    margin: 20px auto 0;
+    padding: 10px;
+    max-height: 600px;
+    max-width: 90vw;
+    overflow: hidden;
+}
+
+.home-carousel .carousel-fullscreen {
+    height: 600px;
+}
+
+/* Centrage de l'image dans chaque slide sans casser l'affichage Bootstrap */
+.carousel-item {
+    /* garder le comportement Bootstrap (display géré par .active/.next/.prev) */
+    background: #000;
+}
+
+.carousel-item img.carousel-fullscreen {
+    display: block;
+    /* permet le centrage horizontal avec margin auto */
+    margin: 0 auto;
+    max-width: 100%;
+    width: auto;
+}
+
+/* Sécurité: réappliquer les règles essentielles du slide Bootstrap si écrasées */
+.home-carousel .carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.home-carousel .carousel-item {
+    position: relative;
+}
+
+.home-carousel .carousel-item.active,
+.home-carousel .carousel-item-next,
+.home-carousel .carousel-item-prev {
+    display: block;
+}
+
+.home-carousel .carousel-item-next:not(.carousel-item-start),
+.home-carousel .active.carousel-item-end {
+    transform: translateX(100%);
+}
+
+.home-carousel .carousel-item-prev:not(.carousel-item-end),
+.home-carousel .active.carousel-item-start {
+    transform: translateX(-100%);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .home-carousel {
+        max-width: 100vw;
+        max-height: 520px;
+    }
+
+    .home-carousel .carousel-fullscreen {
+        height: 520px;
+    }
+}
+
+@media (max-width: 576px) {
+    .home-carousel {
+        max-height: 420px;
+        padding: 0;
+    }
+
+    .home-carousel .carousel-fullscreen {
+        height: 420px;
+    }
+}

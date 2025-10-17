@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil — Concession Tesla{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="Découvrez nos Tesla: Model S et Model 3, photos, caractéristiques et offres.">
+    <meta property="og:title" content="Accueil — Concession Tesla">
+    <meta property="og:description" content="Découvrez nos Tesla: Model S et Model 3, photos, caractéristiques et offres.">
+    <meta property="og:type" content="website">
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+{% endblock %}
+
+{% block body %}
+<h1 class="visually-hidden">Concession Tesla — modèles phares</h1>
+<script>
+    // Détecte dynamiquement la hauteur de la navbar et la stocke dans une variable CSS
+    document.addEventListener('DOMContentLoaded', function() {
+        var navbar = document.querySelector('.navbar');
+        if (navbar) {
+            document.documentElement.style.setProperty('--navbar-height', navbar.offsetHeight + 'px');
+        }
+    });
+</script>
+
+<div class="container-fluid mt-4">
+
+    <div class="row">
+        <div class="col">
+            <!-- Carousel Bootstrap -->
+            <div id="homeCarousel" class="carousel slide home-carousel" data-bs-ride="carousel" data-bs-touch="true" data-bs-interval="5000" data-bs-pause="hover" aria-roledescription="carrousel" aria-live="polite" aria-label="Carrousel de véhicules">
+                <!-- Indicateurs -->
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Diapositive 1"></button>
+                    <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="1" aria-label="Diapositive 2"></button>
+                    <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="2" aria-label="Diapositive 3"></button>
+                </div>
+
+                <!-- Slides -->
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item active">
+                        <img src="https://www.houssedevoiture.net/pub/media/wysiwyg/tesla-fans-schweiz-2swaWy4Xhb0-unsplash.jpg" class="d-block w-100 carousel-fullscreen" alt="Tesla Model S sur route de montagne au coucher du soleil" loading="eager" fetchpriority="high" decoding="async" sizes="(max-width: 992px) 100vw, 90vw">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h2 class="h5 m-0">Tesla Model S</h2>
+                            <p>Performance et élégance, découvrez notre sélection.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://www.presse-citron.net/app/uploads/2020/10/model-3-2020.jpg" class="d-block w-100 carousel-fullscreen" alt="Tesla Model 3 vue latérale sur fond rouge" loading="lazy" decoding="async" sizes="(max-width: 992px) 100vw, 90vw">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h2 class="h5 m-0">Tesla Model 3</h2>
+                            <p>Le meilleur rapport autonomie/prix.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://cdn-xy.drivek.com/eyJidWNrZXQiOiJkYXRhay1jZG4teHkiLCJrZXkiOiJjb25maWd1cmF0b3ItaW1ncy9jYXJzL2ZyL29yaWdpbmFsL1RFU0xBL01PREVMLTMvNDI5NjBfQkVSTElORS00LVBPUlRFUy90ZXNsYS1tb2RlbC0zLWZyb250LXZpZXcuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoxMDI0LCJoZWlnaHQiOm51bGwsImZpdCI6ImNvdmVyIn19fQ==" class="d-block w-100 carousel-fullscreen" alt="Tesla Model 3 vue avant" loading="lazy" decoding="async" sizes="(max-width: 992px) 100vw, 90vw">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h2 class="h5 m-0">Tesla Model 3</h2>
+                            <p>Design minimaliste et technologies avancées.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contrôles -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#homeCarousel" data-bs-slide="prev" aria-label="Diapo précédente">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Précédent</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#homeCarousel" data-bs-slide="next" aria-label="Diapo suivante">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Suivant</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block footer %}
+<footer class="mt-5 py-4 bg-dark text-light">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+        <div>
+            <strong>Tesla Store</strong> — © {{ "now"|date("Y") }} — Tous droits réservés
+        </div>
+        <div class="d-flex gap-3 small">
+            <a class="link-light text-decoration-none" href="#">Mentions légales</a>
+            <a class="link-light text-decoration-none" href="#">Politique de confidentialité</a>
+            <a class="link-light text-decoration-none" href="#">Contact</a>
+        </div>
+    </div>
+ </footer>
+{% endblock %}

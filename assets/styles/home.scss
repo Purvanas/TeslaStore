@@ -1,0 +1,20 @@
+/* Styles spécifiques au carrousel de la page d'accueil */
+.carousel-fullscreen {
+    max-height: calc(100vh - var(--navbar-height, 56px));
+    height: calc(100vh - var(--navbar-height, 56px));
+    object-fit: contain;
+}
+
+.home-carousel {
+    margin-top: 20px;
+    padding: 10px;
+    max-height: 700px;
+    max-width: 90vw;
+    overflow: hidden;
+}
+
+.home-carousel .carousel-fullscreen {
+    height: auto;
+    max-height: 700px;
+    width: 100%;
+}

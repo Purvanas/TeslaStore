@@ -1,0 +1,44 @@
+FallbackResource /index.php
+
+# Compression Brotli (si module disponible)
+<IfModule mod_brotli.c>
+    AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/xml text/css text/javascript application/javascript application/json application/xml image/svg+xml
+    BrotliCompressionQuality 5
+</IfModule>
+
+# Compression Deflate (fallback si Brotli indisponible)
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json application/xml image/svg+xml
+</IfModule>
+
+# Mise en cache agressive pour assets statiques; busting via nom de fichier recommandé
+<IfModule mod_expires.c>
+    ExpiresActive On
+    # Images je pourrais mettre plus, à priori je ne vais pas y retoucher avant un long moment
+    ExpiresByType image/avif "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    # Fonts
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType application/font-woff2 "access plus 1 year"
+    # CSS & JS
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    # HTML
+    ExpiresByType text/html "access plus 1 minute"
+</IfModule>
+
+# Headers de cache explicites
+<IfModule mod_headers.c>
+    <FilesMatch "\.(ico|avif|webp|svg|png|jpe?g|gif|woff2?|css|js)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+    <FilesMatch "\.(html)$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+    </FilesMatch>
+</IfModule>
