@@ -1,97 +1,553 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil — Concession Tesla{% endblock %}
+{% block title %}Accueil — Tesla Store{% endblock %}
 
 {% block meta %}
-    <meta name="description" content="Découvrez nos Tesla: Model S et Model 3, photos, caractéristiques et offres.">
-    <meta property="og:title" content="Accueil — Concession Tesla">
-    <meta property="og:description" content="Découvrez nos Tesla: Model S et Model 3, photos, caractéristiques et offres.">
+    <meta name="description" content="Découvrez nos Tesla: Model S, Model 3, Model X, Model Y. Essais gratuits, financement, service après-vente.">
+    <meta property="og:title" content="Tesla Store — Véhicules électriques premium">
+    <meta property="og:description" content="Découvrez nos Tesla: Model S, Model 3, Model X, Model Y. Essais gratuits, financement, service après-vente.">
     <meta property="og:type" content="website">
 {% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
 {% endblock %}
 
 {% block body %}
-<h1 class="visually-hidden">Concession Tesla — modèles phares</h1>
-<script>
-    // Détecte dynamiquement la hauteur de la navbar et la stocke dans une variable CSS
-    document.addEventListener('DOMContentLoaded', function() {
-        var navbar = document.querySelector('.navbar');
-        if (navbar) {
-            document.documentElement.style.setProperty('--navbar-height', navbar.offsetHeight + 'px');
-        }
-    });
-</script>
+<h1 class="visually-hidden">Tesla Store — Véhicules électriques premium</h1>
 
-<div class="container-fluid mt-4">
-
-    <div class="row">
-        <div class="col">
-            <!-- Carousel Bootstrap -->
-            <div id="homeCarousel" class="carousel slide home-carousel" data-bs-ride="carousel" data-bs-touch="true" data-bs-interval="5000" data-bs-pause="hover" aria-roledescription="carrousel" aria-live="polite" aria-label="Carrousel de véhicules">
-                <!-- Indicateurs -->
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Diapositive 1"></button>
-                    <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="1" aria-label="Diapositive 2"></button>
-                    <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="2" aria-label="Diapositive 3"></button>
-                </div>
-
-                <!-- Slides -->
-                <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item active">
-                        <img src="https://www.houssedevoiture.net/pub/media/wysiwyg/tesla-fans-schweiz-2swaWy4Xhb0-unsplash.jpg" class="d-block w-100 carousel-fullscreen" alt="Tesla Model S sur route de montagne au coucher du soleil" loading="eager" fetchpriority="high" decoding="async" sizes="(max-width: 992px) 100vw, 90vw">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h2 class="h5 m-0">Tesla Model S</h2>
-                            <p>Performance et élégance, découvrez notre sélection.</p>
-                        </div>
+<!-- Hero Section -->
+<section class="hero-section position-relative">
+    <div class="hero-background position-absolute w-100 h-100" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1560958089-b8a1929cea89?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover;"></div>
+    
+    <div class="container position-relative" style="z-index: 2;">
+        <div class="row min-vh-100 align-items-center">
+            <div class="col-lg-6 fade-in-up">
+                <h1 class="display-2 fw-bold text-white mb-4 text-shadow">TESLA STORE</h1>
+                <p class="lead text-white mb-4 text-shadow">L'avenir de l'automobile électrique vous attend. Découvrez nos modèles premium et nos services d'exception.</p>
+                <button class="btn btn-light btn-lg me-3 hover-scale">Découvrir nos véhicules</button>
+                <button class="btn btn-outline-light btn-lg hover-scale">Prendre un RDV</button>
+            </div>
+            <div class="col-lg-6">
+                <!-- Grille de véhicules -->
+                <div class="row g-2">
+                    <div class="col-4">
+                        <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="img-fluid rounded" alt="Tesla Model S">
                     </div>
-                    <div class="carousel-item">
-                        <img src="https://www.presse-citron.net/app/uploads/2020/10/model-3-2020.jpg" class="d-block w-100 carousel-fullscreen" alt="Tesla Model 3 vue latérale sur fond rouge" loading="lazy" decoding="async" sizes="(max-width: 992px) 100vw, 90vw">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h2 class="h5 m-0">Tesla Model 3</h2>
-                            <p>Le meilleur rapport autonomie/prix.</p>
-                        </div>
+                    <div class="col-4">
+                        <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="img-fluid rounded" alt="Tesla Model 3">
                     </div>
-                    <div class="carousel-item">
-                        <img src="https://cdn-xy.drivek.com/eyJidWNrZXQiOiJkYXRhay1jZG4teHkiLCJrZXkiOiJjb25maWd1cmF0b3ItaW1ncy9jYXJzL2ZyL29yaWdpbmFsL1RFU0xBL01PREVMLTMvNDI5NjBfQkVSTElORS00LVBPUlRFUy90ZXNsYS1tb2RlbC0zLWZyb250LXZpZXcuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoxMDI0LCJoZWlnaHQiOm51bGwsImZpdCI6ImNvdmVyIn19fQ==" class="d-block w-100 carousel-fullscreen" alt="Tesla Model 3 vue avant" loading="lazy" decoding="async" sizes="(max-width: 992px) 100vw, 90vw">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h2 class="h5 m-0">Tesla Model 3</h2>
-                            <p>Design minimaliste et technologies avancées.</p>
-                        </div>
+                    <div class="col-4">
+                        <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="img-fluid rounded" alt="Tesla Model X">
+                    </div>
+                    <div class="col-4">
+                        <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="img-fluid rounded" alt="Tesla Model Y">
+                    </div>
+                    <div class="col-4">
+                        <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="img-fluid rounded" alt="Tesla Charging">
+                    </div>
+                    <div class="col-4">
+                        <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="img-fluid rounded" alt="Tesla Interior">
                     </div>
                 </div>
 
-                <!-- Contrôles -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#homeCarousel" data-bs-slide="prev" aria-label="Diapo précédente">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Précédent</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#homeCarousel" data-bs-slide="next" aria-label="Diapo suivante">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Suivant</span>
-                </button>
+                <!-- CTA Box -->
+                <div class="bg-dark p-4 rounded mt-4">
+                    <h3 class="text-white h5 mb-3">UNE PAGE À METTRE EN AVANT</h3>
+                    <p class="text-white-50 mb-3">Découvrez notre gamme complète de véhicules électriques Tesla et nos services premium.</p>
+                    <button class="btn btn-light">Découvrir</button>
+                </div>
             </div>
         </div>
     </div>
+</section>
 
+<!-- Véhicules en vedette -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5 fw-bold">TROUVEZ LA VOITURE QUI VOUS CONVIENT LE MIEUX</h2>
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <div class="card h-100 shadow-sm hover-shadow">
+                    <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Tesla Model S" style="height: 250px; object-fit: cover;">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Tesla Model S</h5>
+                        <p class="card-text text-muted">Performance et élégance réunies</p>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="h4 text-primary mb-0">PRIX C</span>
+                            <span class="h4 text-dark mb-0">89 990 €</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <button class="btn btn-outline-secondary btn-sm hover-scale">
+                                <i class="bi bi-heart"></i>
+                            </button>
+                            <button class="btn btn-outline-secondary btn-sm hover-scale">
+                                <i class="bi bi-share"></i>
+                            </button>
+                        </div>
+                        <button class="btn btn-dark mt-auto hover-scale">VOIR LE VÉHICULE</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card h-100 shadow-sm hover-shadow">
+                    <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Tesla Model 3" style="height: 250px; object-fit: cover;">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Tesla Model 3</h5>
+                        <p class="card-text text-muted">Le meilleur rapport autonomie/prix</p>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="h4 text-primary mb-0">PRIX C</span>
+                            <span class="h4 text-dark mb-0">42 990 €</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <button class="btn btn-outline-secondary btn-sm hover-scale">
+                                <i class="bi bi-heart"></i>
+                            </button>
+                            <button class="btn btn-outline-secondary btn-sm hover-scale">
+                                <i class="bi bi-share"></i>
+                            </button>
+                        </div>
+                        <button class="btn btn-dark mt-auto hover-scale">VOIR LE VÉHICULE</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card h-100 shadow-sm hover-shadow">
+                    <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Tesla Model Y" style="height: 250px; object-fit: cover;">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Tesla Model Y</h5>
+                        <p class="card-text text-muted">SUV électrique polyvalent</p>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="h4 text-primary mb-0">PRIX C</span>
+                            <span class="h4 text-dark mb-0">54 990 €</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <button class="btn btn-outline-secondary btn-sm hover-scale">
+                                <i class="bi bi-heart"></i>
+                            </button>
+                            <button class="btn btn-outline-secondary btn-sm hover-scale">
+                                <i class="bi bi-share"></i>
+                            </button>
+                        </div>
+                        <button class="btn btn-dark mt-auto hover-scale">VOIR LE VÉHICULE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5 fw-bold">NOS SERVICES</h2>
+        <div id="servicesCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="2"></button>
+            </div>
+            <div class="carousel-inner">
+                    <div class="carousel-item active">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <img src="https://images.unsplash.com/photo-1593941707882-a5bac6861d75?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="img-fluid rounded" alt="Service après-vente">
+                        </div>
+                        <div class="col-lg-6">
+                            <h3 class="h4 mb-3">SERVICE APRÈS-VENTE</h3>
+                            <p class="text-muted mb-4">Notre équipe d'experts certifiés Tesla vous accompagne pour l'entretien et la maintenance de votre véhicule.</p>
+                            <button class="btn btn-dark">EN SAVOIR PLUS</button>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <img src="https://images.unsplash.com/photo-1593941707882-a5bac6861d75?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="img-fluid rounded" alt="Financement">
+                        </div>
+                        <div class="col-lg-6">
+                            <h3 class="h4 mb-3">FINANCEMENT</h3>
+                            <p class="text-muted mb-4">Solutions de financement adaptées à vos besoins avec nos partenaires bancaires privilégiés.</p>
+                            <button class="btn btn-dark">EN SAVOIR PLUS</button>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <img src="https://images.unsplash.com/photo-1593941707882-a5bac6861d75?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="img-fluid rounded" alt="Recharge">
+                        </div>
+                        <div class="col-lg-6">
+                            <h3 class="h4 mb-3">RÉSEAU DE RECHARGE</h3>
+                            <p class="text-muted mb-4">Accès au réseau Supercharger Tesla et à notre réseau de bornes de recharge partenaires.</p>
+                            <button class="btn btn-dark">EN SAVOIR PLUS</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#servicesCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#servicesCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Informations entreprise -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5 fw-bold">INFORMATIONS SUR TESLA STORE</h2>
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="ratio ratio-16x9">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.991440608142!2d2.292292515674316!3d48.85837007928746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2964e34e2d%3A0x8ddca9ee380ef7e0!2sTour%20Eiffel!5e0!3m2!1sfr!2sfr!4v1635789234567!5m2!1sfr!2sfr" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h3 class="h4 mb-4">Notre engagement</h3>
+                <p class="text-muted mb-3">Tesla Store est votre partenaire de confiance pour l'achat et l'entretien de véhicules électriques premium. Nous vous accompagnons dans votre transition vers une mobilité plus durable.</p>
+                <p class="text-muted mb-4">Notre équipe d'experts certifiés vous propose des solutions personnalisées et un service d'exception.</p>
+                <div class="row g-3 mb-4">
+                    <div class="col-6">
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-geo-alt text-primary me-2"></i>
+                            <small>123 Avenue des Champs-Élysées<br>75008 Paris</small>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-telephone text-primary me-2"></i>
+                            <small>01 23 45 67 89</small>
+                        </div>
+                    </div>
+                </div>
+                <a href="{{ path('app_about_us') }}" class="btn btn-dark hover-scale">LIEN PAGE QUI SOMMES NOUS</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Concessions du groupe -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5 fw-bold">NOS CONCESSIONS</h2>
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <div class="card h-100">
+                    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Tesla Store Paris" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">TESLA STORE PARIS</h5>
+                        <p class="card-text text-muted">Notre concession principale au cœur de Paris. Découvrez tous nos modèles et services.</p>
+                        <button class="btn btn-outline-dark">LIEN VERS LA FICHE DE LA CONCESSION</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card h-100">
+                    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Tesla Store Lyon" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">TESLA STORE LYON</h5>
+                        <p class="card-text text-muted">Service et expertise Tesla dans la région lyonnaise. Essais et conseils personnalisés.</p>
+                        <button class="btn btn-outline-dark">LIEN VERS LA FICHE DE LA CONCESSION</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card h-100">
+                    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Tesla Store Marseille" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">TESLA STORE MARSEILLE</h5>
+                        <p class="card-text text-muted">Votre partenaire Tesla en Provence. Réseau de recharge et service après-vente.</p>
+                        <button class="btn btn-outline-dark">LIEN VERS LA FICHE DE LA CONCESSION</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Témoignages -->
+<section class="py-5 bg-dark text-white">
+    <div class="container">
+        <h2 class="text-center mb-5 fw-bold">TÉMOIGNAGES CLIENTS</h2>
+        <div id="testimonialsCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#testimonialsCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#testimonialsCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#testimonialsCarousel" data-bs-slide-to="2"></button>
+            </div>
+            <div class="carousel-inner text-center">
+                <div class="carousel-item active">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <p class="lead mb-4">"Service exceptionnel et équipe très professionnelle. Mon Model 3 est parfait et l'équipe m'a accompagné tout au long du processus d'achat."</p>
+                            <h5 class="text-light">Marie L.</h5>
+                            <small class="text-muted">Propriétaire Model 3</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <p class="lead mb-4">"L'expérience Tesla Store dépasse toutes mes attentes. Véhicule de qualité et service après-vente irréprochable."</p>
+                            <h5 class="text-light">Jean-Pierre M.</h5>
+                            <small class="text-muted">Propriétaire Model S</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <p class="lead mb-4">"Transition vers l'électrique réussie grâce à l'expertise de Tesla Store. Je recommande vivement !"</p>
+                            <h5 class="text-light">Sophie D.</h5>
+                            <small class="text-muted">Propriétaire Model Y</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+                </button>
+        </div>
+    </div>
+</section>
+
+<!-- Actualités -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center mb-5">
+            <div class="col-lg-6">
+                <h2 class="fw-bold mb-0">UNE ACTUALITÉ</h2>
+            </div>
+            <div class="col-lg-6 text-end">
+                <button class="btn btn-outline-dark">
+                    <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" class="img-fluid rounded" alt="Actualité Tesla">
+            </div>
+            <div class="col-lg-4">
+                <h3 class="h5 mb-3">Nouvelle Supercharger V4</h3>
+                <p class="text-muted">Découvrez notre nouveau réseau de Superchargers V4, plus rapides et plus efficaces que jamais.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Carrousel actualités -->
+<section class="py-5">
+    <div class="container">
+        <div class="row align-items-center mb-4">
+            <div class="col-lg-6">
+                <h2 class="fw-bold mb-0">LES ACTUALITÉS</h2>
+            </div>
+            <div class="col-lg-6 text-end">
+                <a href="#" class="btn btn-link">VOIR TOUTES LES ACTUALITÉS</a>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Article 1" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">UN ARTICLE</h5>
+                        <p class="card-text text-muted">Découvrez les dernières innovations Tesla...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Article 2" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">UN ARTICLE</h5>
+                        <p class="card-text text-muted">Nouvelles fonctionnalités du système de navigation...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Article 3" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">UN ARTICLE</h5>
+                        <p class="card-text text-muted">Guide complet pour l'entretien de votre Tesla...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Formulaires de contact -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-xl-6">
+                <div class="text-center mb-5">
+                    <h2 class="fw-bold mb-4">FORMULAIRE DE CONTACT</h2>
+                    <p class="text-muted">Contactez-nous pour toute question ou demande d'information</p>
+                </div>
+                <div class="card shadow-sm">
+                    <div class="card-body p-4">
+                        <form>
+                            <div class="mb-3">
+                                <label class="form-label">Sujet</label>
+                                <select class="form-select">
+                                    <option>Demande d'informations</option>
+                                    <option>Rendez-vous atelier</option>
+                                    <option>Essai véhicule</option>
+                                    <option>Autre</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Agence</label>
+                                <select class="form-select">
+                                    <option>Paris</option>
+                                    <option>Lyon</option>
+                                    <option>Marseille</option>
+                                </select>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Nom</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Prénom</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Téléphone</label>
+                                    <input type="tel" class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Message</label>
+                                <textarea class="form-control" rows="4"></textarea>
+                            </div>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="conditions">
+                                <label class="form-check-label" for="conditions">
+                                    J'accepte les conditions générales
+                                </label>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-dark btn-lg px-5">Envoyer</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 </div>
+</section>
 
 {% endblock %}
 
 {% block footer %}
-<footer class="mt-5 py-4 bg-dark text-light">
-    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
-        <div>
-            <strong>Tesla Store</strong> — © {{ "now"|date("Y") }} — Tous droits réservés
+<footer class="bg-dark text-white py-5">
+    <div class="container">
+        <div class="row g-4">
+            <!-- Contact Information -->
+            <div class="col-lg-4">
+                <h5 class="fw-bold mb-4">NOS CONCESSIONS</h5>
+                <div class="mb-4">
+                    <div class="d-flex align-items-start mb-3">
+                        <i class="bi bi-geo-alt text-primary me-3 mt-1"></i>
+                        <div class="text-white-50">
+                            <h6 class="mb-1 text-white-50">TESLA STORE PARIS</h6>
+                            <small class="text-muted text-white-50">123 Avenue des Champs-Élysées<br>75008 Paris<br>📞 01 23 45 67 89</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Services -->
+            <div class="col-lg-2">
+                <h5 class="fw-bold mb-4">SERVICES</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Neuf</a></li>
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Occasion</a></li>
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Atelier</a></li>
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Pièces</a></li>
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Financement</a></li>
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Assurance</a></li>
+                </ul>
+            </div>
+            
+            <!-- Actualités -->
+            <div class="col-lg-2">
+                <h5 class="fw-bold mb-4">ACTUALITÉS</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Nos actus</a></li>
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Événements</a></li>
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Promotions</a></li>
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Nouveautés</a></li>
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Tests</a></li>
+                </ul>
+            </div>
+            
+            <!-- Informations -->
+            <div class="col-lg-2">
+                <h5 class="fw-bold mb-4">INFORMATIONS</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Mentions légales</a></li>
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Politique de confidentialité</a></li>
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Plan du site</a></li>
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Gestion des cookies</a></li>
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">CGV</a></li>
+                </ul>
+            </div>
+            
+            <!-- Newsletter -->
+            <div class="col-lg-2">
+                <h5 class="fw-bold mb-4">NEWSLETTER</h5>
+                <p class="text-white-50 small mb-3">Restez informé de nos dernières actualités</p>
+                <div class="input-group mb-3">
+                    <input type="email" class="form-control form-control-sm" placeholder="Votre email">
+                    <button class="btn btn-outline-light btn-sm" type="button">
+                        <i class="bi bi-arrow-right"></i>
+                    </button>
+                </div>
+                <div class="d-flex gap-3">
+                    <a href="#" class="text-white-50"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-white-50"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="text-white-50"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="text-white-50"><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
         </div>
-        <div class="d-flex gap-3 small">
-            <a class="link-light text-decoration-none" href="#">Mentions légales</a>
-            <a class="link-light text-decoration-none" href="#">Politique de confidentialité</a>
-            <a class="link-light text-decoration-none" href="#">Contact</a>
+        
+        <hr class="my-4">
+        
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <p class="mb-0 text-white-50">
+                    <strong>Tesla Store</strong> — © {{ "now"|date("Y") }} — Tous droits réservés
+                </p>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <p class="mb-0 text-white-50 small">
+                    Site réalisé avec ❤️ par Tesla Store
+                </p>
+            </div>
         </div>
     </div>
  </footer>
 {% endblock %}
+

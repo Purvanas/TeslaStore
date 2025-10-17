@@ -1,20 +1,213 @@
-/* Styles spécifiques au carrousel de la page d'accueil */
-.carousel-fullscreen {
-    max-height: calc(100vh - var(--navbar-height, 56px));
-    height: calc(100vh - var(--navbar-height, 56px));
-    object-fit: contain;
+/* ===== HERO SECTION ===== */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
 }
 
-.home-carousel {
-    margin-top: 20px;
-    padding: 10px;
-    max-height: 700px;
-    max-width: 90vw;
-    overflow: hidden;
+.hero-background {
+    background-attachment: fixed;
+    z-index: 1;
 }
 
-.home-carousel .carousel-fullscreen {
-    height: auto;
-    max-height: 700px;
-    width: 100%;
+/* ===== NAVIGATION ===== */
+.navbar-brand img {
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover img {
+    transform: scale(1.1);
+}
+
+.brand-logo {
+    transition: opacity 0.3s ease;
+}
+
+.brand-logo:hover {
+    opacity: 0.8;
+}
+
+/* ===== VÉHICULES EN VEDETTE ===== */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
+}
+
+.card-img-top {
+    transition: transform 0.3s ease;
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+/* ===== CARROUSELS ===== */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 50px;
+    height: 50px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1;
+}
+
+.carousel-indicators button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin: 0 5px;
+    border: 2px solid #fff;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.carousel-indicators button.active {
+    background: #fff;
+}
+
+/* ===== SECTIONS ===== */
+section {
+    position: relative;
+}
+
+section:nth-child(even) {
+    background: #f8f9fa;
+}
+
+/* ===== FORMULAIRES ===== */
+.form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.btn {
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+/* ===== FOOTER ===== */
+footer a {
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #fff !important;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 80vh;
+        text-align: center;
+    }
+    
+    .display-2 {
+        font-size: 2.5rem;
+    }
+    
+    .card {
+        margin-bottom: 2rem;
+    }
+    
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-section {
+        min-height: 70vh;
+    }
+    
+    .display-2 {
+        font-size: 2rem;
+    }
+    
+    .btn-lg {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* ===== UTILITAIRES ===== */
+.text-shadow {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #0d6efd 0%, #6610f2 100%);
+}
+
+.bg-gradient-dark {
+    background: linear-gradient(135deg, #212529 0%, #495057 100%);
+}
+
+/* ===== HOVER EFFECTS ===== */
+.hover-scale {
+    transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+}
+
+.hover-shadow {
+    transition: box-shadow 0.3s ease;
+}
+
+.hover-shadow:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* ===== CUSTOM SCROLLBAR ===== */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }

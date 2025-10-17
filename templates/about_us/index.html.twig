@@ -1,0 +1,197 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Qui sommes nous ? — Tesla Store{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="Découvrez l'histoire, les valeurs et l'équipe de Tesla Store. Notre engagement pour l'avenir de l'automobile électrique.">
+    <meta property="og:title" content="Qui sommes nous ? — Tesla Store">
+    <meta property="og:description" content="Découvrez l'histoire, les valeurs et l'équipe de Tesla Store. Notre engagement pour l'avenir de l'automobile électrique.">
+    <meta property="og:type" content="website">
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<h1 class="visually-hidden">Qui sommes nous ? — Tesla Store</h1>
+
+<!-- Hero Section "Qui sommes nous ?" -->
+<section class="position-relative py-5" style="min-height: 70vh; display: flex; align-items: center; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1522071820075-efceb689a497?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover fixed;">
+    <div class="container position-relative" style="z-index: 2;">
+        <div class="row align-items-center">
+            <div class="col-lg-7 mb-4 mb-lg-0">
+                <img src="https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" class="img-fluid rounded shadow-lg" alt="Équipe Tesla Store en collaboration">
+            </div>
+            <div class="col-lg-5 text-white">
+                <div class="bg-dark p-4 rounded shadow-lg mb-4">
+                    <h2 class="display-5 fw-bold mb-3 text-shadow">UN TITRE POUR PRÉSENTER LE GROUPE</h2>
+                </div>
+                <p class="lead text-shadow">
+                    Tesla Store est bien plus qu'une simple concession automobile. Nous sommes les pionniers de la révolution électrique, engagés à transformer votre vision de la mobilité durable et à vous accompagner vers un avenir plus propre.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Blocs d'informations clés -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5 fw-bold">NOS ENGAGEMENTS</h2>
+        <div class="row text-center g-4">
+            <div class="col-md-4">
+                <div class="card h-100 p-4 shadow-sm border-0 hover-shadow">
+                    <div class="text-primary mb-3">
+                        <i class="bi bi-people-fill" style="font-size: 3rem;"></i>
+                    </div>
+                    <h3 class="h5 fw-bold text-primary mb-3">UNE ÉQUIPE QUALIFIÉE</h3>
+                    <p class="text-muted">
+                        Notre équipe est composée d'experts certifiés Tesla, formés aux dernières technologies électriques. Chaque membre partage notre passion pour l'innovation et l'excellence du service client.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 p-4 shadow-sm border-0 hover-shadow">
+                    <div class="text-primary mb-3">
+                        <i class="bi bi-heart-fill" style="font-size: 3rem;"></i>
+                    </div>
+                    <h3 class="h5 fw-bold text-primary mb-3">UN GROUPE FAMILIAL</h3>
+                    <p class="text-muted">
+                        Depuis notre création, nous cultivons des valeurs humaines fortes. Chaque client devient un membre de notre famille Tesla Store, bénéficiant d'un accompagnement personnalisé et durable.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 p-4 shadow-sm border-0 hover-shadow">
+                    <div class="text-primary mb-3">
+                        <i class="bi bi-star-fill" style="font-size: 3rem;"></i>
+                    </div>
+                    <h3 class="h5 fw-bold text-primary mb-3">UN SERVICE HAUT DE GAMME</h3>
+                    <p class="text-muted">
+                        Nous nous engageons à offrir une expérience premium à chaque étape : de l'essai à l'achat, en passant par l'entretien et le service après-vente. L'excellence est notre standard.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 p-4 shadow-sm border-0 hover-shadow">
+                    <div class="text-primary mb-3">
+                        <i class="bi bi-briefcase-fill" style="font-size: 3rem;"></i>
+                    </div>
+                    <h3 class="h5 fw-bold text-primary mb-3">S'ADRESSE À DES PRO ET DES PARTICULIERS</h3>
+                    <p class="text-muted">
+                        Que vous soyez un particulier souhaitant passer à l'électrique ou une entreprise désireuse de moderniser sa flotte, nous avons des solutions adaptées à vos besoins spécifiques.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 p-4 shadow-sm border-0 hover-shadow">
+                    <div class="text-primary mb-3">
+                        <i class="bi bi-truck" style="font-size: 3rem;"></i>
+                    </div>
+                    <h3 class="h5 fw-bold text-primary mb-3">LIVRAISON & RESTITUTION</h3>
+                    <p class="text-muted">
+                        Service de livraison à domicile et reprise de votre ancien véhicule. Nous nous occupons de tout pour que votre transition vers l'électrique soit la plus simple possible.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 p-4 shadow-sm border-0 hover-shadow">
+                    <div class="text-primary mb-3">
+                        <i class="bi bi-graph-up" style="font-size: 3rem;"></i>
+                    </div>
+                    <h3 class="h5 fw-bold text-primary mb-3">CHIFFRES IMPORTANTS</h3>
+                    <p class="text-muted">
+                        Plus de 1000 véhicules Tesla livrés, 98% de clients satisfaits, 3 concessions en France. Des chiffres qui témoignent de notre expertise et de votre confiance.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section "Notre Équipe" et "Notre Direction" -->
+<section class="py-5">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6">
+                <h2 class="fw-bold mb-4 text-primary">UNE ÉQUIPE</h2>
+                <p class="lead mb-4">
+                    Notre équipe est le cœur de Tesla Store. Composée de professionnels passionnés, chacun apporte son expertise unique pour vous offrir le meilleur service. De nos conseillers commerciaux à nos techniciens certifiés, tous partagent la même vision : démocratiser l'automobile électrique tout en maintenant les plus hauts standards de qualité.
+                </p>
+                <div class="d-flex justify-content-center">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="img-fluid rounded-circle shadow-lg" alt="Membre de l'équipe Tesla Store" style="width: 250px; height: 250px; object-fit: cover;">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h2 class="fw-bold mb-4 text-primary">NOTRE DIRECTION</h2>
+                <p class="lead mb-4">
+                    Dirigée par des visionnaires de l'automobile électrique, notre direction allie expérience traditionnelle et innovation technologique. Forte de plus de 15 ans d'expertise dans le secteur automobile, elle a su anticiper la révolution électrique et positionner Tesla Store comme un acteur incontournable de cette transformation.
+                </p>
+                <div class="d-flex justify-content-center">
+                    <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" class="img-fluid rounded shadow-lg" alt="Direction Tesla Store" style="max-height: 300px; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section valeurs et mission -->
+<section class="py-5 bg-dark text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h2 class="fw-bold mb-4">NOTRE MISSION</h2>
+                <p class="lead mb-4">
+                    Accélérer la transition mondiale vers une énergie durable en rendant l'automobile électrique accessible à tous. Nous croyons fermement que chaque kilomètre parcouru en véhicule électrique est un pas vers un avenir plus propre.
+                </p>
+                <div class="row g-3">
+                    <div class="col-6">
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-lightning-charge-fill text-warning me-3" style="font-size: 2rem;"></i>
+                            <div>
+                                <h6 class="mb-1">Innovation</h6>
+                                <small class="text-muted">Technologies de pointe</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-globe text-info me-3" style="font-size: 2rem;"></i>
+                            <div>
+                                <h6 class="mb-1">Durabilité</h6>
+                                <small class="text-muted">Respect de l'environnement</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="img-fluid rounded shadow-lg" alt="Tesla Store - Mission">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section contact CTA -->
+<section class="py-5 bg-light">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-4">REJOIGNEZ LA RÉVOLUTION ÉLECTRIQUE</h2>
+        <p class="lead mb-4">Découvrez comment Tesla Store peut transformer votre expérience de conduite</p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a href="{{ path('app_home') }}" class="btn btn-dark btn-lg hover-scale">
+                <i class="bi bi-house me-2"></i>Retour à l'accueil
+            </a>
+            <a href="#" class="btn btn-outline-dark btn-lg hover-scale">
+                <i class="bi bi-calendar-check me-2"></i>Prendre un RDV
+            </a>
+            <a href="#" class="btn btn-outline-dark btn-lg hover-scale">
+                <i class="bi bi-telephone me-2"></i>Nous contacter
+            </a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
