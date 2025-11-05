@@ -55,7 +55,7 @@
                         <li><a class="dropdown-item" href="#">Model X</a></li>
                         <li><a class="dropdown-item" href="#">Model Y</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Véhicules d'occasion</a></li>
+                        <li><a class="dropdown-item" href="{{ path('app_products') }}">Véhicules d'occasion</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -71,11 +71,14 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link fw-semibold" href="{{ path('app_about_us') }}">Qui sommes nous ?</a>
+                    <a class="nav-link fw-semibold" href="{{ path('app_products') }}">Occasion</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link fw-semibold" href="#">Actualités</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold" href="{{ path('app_about_us') }}">Qui sommes nous ?</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold" href="{{ path('app_articles') }}">Actualités</a>
+                    </li>
                 <li class="nav-item">
                     <a class="nav-link fw-semibold" href="#">Contact</a>
                 </li>

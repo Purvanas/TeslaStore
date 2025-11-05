@@ -1,0 +1,349 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ vehicle.name }} — Tesla Store{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="Découvrez le {{ vehicle.name }} d'occasion chez Tesla Store. {{ vehicle.year }}, {{ vehicle.mileage|number_format(0, ',', ' ') }} km, {{ vehicle.price|number_format(0, ',', ' ') }} €.">
+    <meta property="og:title" content="{{ vehicle.name }} — Tesla Store">
+    <meta property="og:description" content="Découvrez le {{ vehicle.name }} d'occasion chez Tesla Store. {{ vehicle.year }}, {{ vehicle.mileage|number_format(0, ',', ' ') }} km, {{ vehicle.price|number_format(0, ',', ' ') }} €.">
+    <meta property="og:type" content="website">
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<h1 class="visually-hidden">{{ vehicle.name }} — Tesla Store</h1>
+
+<!-- Hero Section -->
+<section class="position-relative py-5" style="min-height: 70vh; display: flex; align-items: center; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{{ vehicle.images[0] }}') center/cover fixed;">
+    <div class="container position-relative" style="z-index: 2;">
+        <div class="row align-items-center">
+            <div class="col-lg-8 mx-auto text-center text-white">
+                <p class="text-white-50 mb-2">Véhicule d'occasion certifié</p>
+                <h1 class="display-2 fw-bold mb-4 text-shadow">{{ vehicle.name }}</h1>
+                <p class="lead text-shadow mb-4">{{ vehicle.description }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Main Content -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <!-- Image principale et galerie -->
+            <div class="col-lg-8 mb-5">
+                <div class="position-relative">
+                    <img src="{{ vehicle.images[0] }}" class="img-fluid rounded shadow-lg w-100" alt="{{ vehicle.name }}" style="height: 500px; object-fit: cover;">
+                    <button class="btn btn-light btn-lg position-absolute top-50 start-0 translate-middle-y ms-3 rounded-circle" style="width: 50px; height: 50px;">
+                        <i class="bi bi-chevron-left"></i>
+                    </button>
+                    <button class="btn btn-light btn-lg position-absolute top-50 end-0 translate-middle-y me-3 rounded-circle" style="width: 50px; height: 50px;">
+                        <i class="bi bi-chevron-right"></i>
+                    </button>
+                </div>
+                
+                <!-- Galerie d'images secondaires -->
+                <div class="row g-3 mt-4">
+                    {% for image in vehicle.images %}
+                    <div class="col-3">
+                        <img src="{{ image }}" class="img-fluid rounded shadow-sm" alt="{{ vehicle.name }} - Image {{ loop.index }}" style="height: 120px; object-fit: cover; cursor: pointer;" onclick="changeMainImage(this.src)">
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Informations du véhicule -->
+            <div class="col-lg-4">
+                <div class="card shadow-lg">
+                    <div class="card-body p-4">
+                        <h2 class="h3 fw-bold mb-3">{{ vehicle.name }}</h2>
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <span class="text-primary fw-bold fs-4">PRIX €</span>
+                            <span class="h2 text-dark mb-0">{{ vehicle.price|number_format(0, ',', ' ') }} €</span>
+                        </div>
+                        
+                        <div class="row g-3 mb-4">
+                            <div class="col-6">
+                                <div class="text-center p-3 bg-light rounded">
+                                    <i class="bi bi-calendar text-primary fs-4 mb-2"></i>
+                                    <div class="fw-bold">{{ vehicle.year }}</div>
+                                    <small class="text-muted">Année</small>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="text-center p-3 bg-light rounded">
+                                    <i class="bi bi-speedometer2 text-primary fs-4 mb-2"></i>
+                                    <div class="fw-bold">{{ vehicle.mileage|number_format(0, ',', ' ') }} km</div>
+                                    <small class="text-muted">Kilométrage</small>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="text-center p-3 bg-light rounded">
+                                    <i class="bi bi-lightning text-primary fs-4 mb-2"></i>
+                                    <div class="fw-bold">{{ vehicle.fuel }}</div>
+                                    <small class="text-muted">Énergie</small>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="text-center p-3 bg-light rounded">
+                                    <i class="bi bi-gear text-primary fs-4 mb-2"></i>
+                                    <div class="fw-bold">{{ vehicle.transmission }}</div>
+                                    <small class="text-muted">Transmission</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-dark btn-lg">
+                                <i class="bi bi-telephone me-2"></i>Prendre RDV
+                            </button>
+                            <button class="btn btn-outline-dark">
+                                <i class="bi bi-heart me-2"></i>Ajouter aux favoris
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section détaillée -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="fw-bold mb-0">TOUT SAVOIR SUR NOTRE VÉHICULE</h2>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-outline-secondary btn-sm">
+                            <i class="bi bi-heart"></i>
+                        </button>
+                        <button class="btn btn-outline-secondary btn-sm">
+                            <i class="bi bi-search"></i>
+                        </button>
+                        <button class="btn btn-outline-secondary btn-sm">
+                            <i class="bi bi-share"></i>
+                        </button>
+                        <button class="btn btn-outline-secondary btn-sm">
+                            <i class="bi bi-facebook"></i>
+                        </button>
+                        <button class="btn btn-outline-secondary btn-sm">
+                            <i class="bi bi-twitter"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Onglets -->
+                <ul class="nav nav-tabs mb-4" id="vehicleTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="vehicle-tab" data-bs-toggle="tab" data-bs-target="#vehicle" type="button" role="tab">
+                            VÉHICULE
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="equipment-tab" data-bs-toggle="tab" data-bs-target="#equipment" type="button" role="tab">
+                            ÉQUIPEMENTS
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="options-tab" data-bs-toggle="tab" data-bs-target="#options" type="button" role="tab">
+                            OPTIONS
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- Contenu des onglets -->
+                <div class="tab-content" id="vehicleTabsContent">
+                    <div class="tab-pane fade show active" id="vehicle" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5 class="fw-bold mb-3">Caractéristiques principales</h5>
+                                <ul class="list-unstyled">
+                                    {% for feature in vehicle.features %}
+                                    <li class="mb-2">
+                                        <i class="bi bi-check-circle text-success me-2"></i>
+                                        {{ feature }}
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h5 class="fw-bold mb-3">Performances</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">
+                                        <i class="bi bi-lightning text-primary me-2"></i>
+                                        <strong>Puissance :</strong> {{ vehicle.power }}
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="bi bi-speedometer2 text-primary me-2"></i>
+                                        <strong>Accélération :</strong> {{ vehicle.acceleration }}
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="bi bi-arrow-right text-primary me-2"></i>
+                                        <strong>Autonomie :</strong> {{ vehicle.autonomy }}
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="bi bi-gear text-primary me-2"></i>
+                                        <strong>Transmission :</strong> {{ vehicle.transmission }}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="equipment" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5 class="fw-bold mb-3">Équipements de série</h5>
+                                <ul class="list-unstyled">
+                                    {% for equipment in vehicle.equipment %}
+                                    <li class="mb-2">
+                                        <i class="bi bi-check-circle text-success me-2"></i>
+                                        {{ equipment }}
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h5 class="fw-bold mb-3">Sécurité</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">
+                                        <i class="bi bi-shield-check text-primary me-2"></i>
+                                        Airbags frontaux et latéraux
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="bi bi-shield-check text-primary me-2"></i>
+                                        Système de freinage ABS
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="bi bi-shield-check text-primary me-2"></i>
+                                        Contrôle de stabilité ESP
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="bi bi-shield-check text-primary me-2"></i>
+                                        Caméras de recul
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="options" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5 class="fw-bold mb-3">Options disponibles</h5>
+                                <ul class="list-unstyled">
+                                    {% for option in vehicle.options %}
+                                    <li class="mb-2">
+                                        <i class="bi bi-plus-circle text-warning me-2"></i>
+                                        {{ option }}
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h5 class="fw-bold mb-3">Garantie</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">
+                                        <i class="bi bi-award text-success me-2"></i>
+                                        Garantie constructeur : 4 ans
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="bi bi-award text-success me-2"></i>
+                                        Garantie batterie : 8 ans
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="bi bi-award text-success me-2"></i>
+                                        Contrôle technique récent
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="bi bi-award text-success me-2"></i>
+                                        Historique d'entretien complet
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Formulaire de contact -->
+<section class="py-5 bg-dark text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="text-center fw-bold mb-5">Ce véhicule vous intéresse ? Prenez contact dès maintenant</h2>
+                <div class="card">
+                    <div class="card-body p-4">
+                        <form>
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Prénom</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Nom</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Adresse mail</label>
+                                    <input type="email" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Téléphone</label>
+                                    <input type="tel" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-8">
+                                    <label class="form-label fw-semibold">Adresse postale</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold">Code postal</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">Modèle du véhicule</label>
+                                <input type="text" class="form-control" value="{{ vehicle.name }}" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">Date d'essai souhaitée</label>
+                                <input type="date" class="form-control">
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label fw-semibold">Message</label>
+                                <textarea class="form-control" rows="4" placeholder="Décrivez vos besoins ou questions..."></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-dark btn-lg px-5">
+                                    <i class="bi bi-send me-2"></i>ENVOYER
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+function changeMainImage(src) {
+    const mainImage = document.querySelector('.img-fluid.rounded.shadow-lg.w-100');
+    mainImage.src = src;
+}
+</script>
+
+{% endblock %}
+
